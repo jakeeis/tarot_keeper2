@@ -1,12 +1,14 @@
-//import newreadings.css
-// import "../styles/newreading.css";
+import React from "react";
+
+// import newreadings.css
+import "../styles/newreading.css";
 // import Header from "./Header";
-// import Footer from "./Footer";
+import Footer from "./Footer";
 
 export default function NewReading() {
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <h1>Hello</h1>
       <Footer />
     </>

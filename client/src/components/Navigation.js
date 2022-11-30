@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
   MDBNavbar,
   MDBContainer,
@@ -6,9 +6,9 @@ import {
   MDBNavbarNav,
   MDBNavbarItem,
   MDBNavbarToggler,
-  MDBCollapse,
-} from "mdb-react-ui-kit";
-import { Link } from "react-router-dom";
+  MDBCollapse
+} from 'mdb-react-ui-kit';
+import { Link } from 'react-router-dom';
 
 export default function Navbar() {
   const [showNavText, setShowNavText] = useState(false);
@@ -16,7 +16,7 @@ export default function Navbar() {
   return (
     <MDBNavbar expand="lg" light bgColor="light">
       <MDBContainer fluid>
-        <Link to="/NewReading">
+        <Link to="/">
           {/* <MDBNavbarBrand> */}
           Home
           {/* </MDBNavbarBrand> */}
@@ -33,6 +33,13 @@ export default function Navbar() {
         </MDBNavbarToggler>
         <MDBCollapse navbar show={showNavText}>
           <MDBNavbarNav className="mr-auto mb-2 mb-lg-0">
+            <Link to="/NewReading">
+              <MDBNavbarItem>
+                {/* <MDBNavbarLink active aria-current="page"> */}
+                New Reading
+                {/* </MDBNavbarLink> */}
+              </MDBNavbarItem>
+            </Link>
             <Link to="/PastReadings">
               <MDBNavbarItem>
                 {/* <MDBNavbarLink active aria-current="page"> */}
@@ -50,7 +57,7 @@ export default function Navbar() {
             <Link to="/FriendReadings">
               <MDBNavbarItem>
                 {/* <MDBNavbarLink> */}
-                Projects
+                Friends' Readings
                 {/* </MDBNavbarLink> */}
               </MDBNavbarItem>
             </Link>

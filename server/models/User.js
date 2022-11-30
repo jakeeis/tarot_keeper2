@@ -8,26 +8,26 @@ const userSchema = new Schema(
     username: {
       type: String,
       required: true,
-      unique: true,
+      unique: true
     },
     email: {
       type: String,
       required: true,
       unique: true,
-      match: [/.+@.+\..+/, 'Must use a valid email address'],
+      match: [/.+@.+\..+/, 'Must use a valid email address']
     },
     password: {
       type: String,
-      required: true,
+      required: true
     },
 
-    tarotCard: [cardSchema],
+    tarotCard: [cardSchema]
   },
 
   {
     toJSON: {
-      virtuals: true,
-    },
+      virtuals: true
+    }
   }
 );
 
@@ -47,5 +47,26 @@ userSchema.methods.isCorrectPassword = async function (password) {
 };
 
 const User = model('User', userSchema);
+
+// TODO: Remove this
+(async () => {
+  const jake = await User.find({ username: /^Jake$/ });
+
+  if (!jake.length) {
+    console.log('Creating new user');
+
+    const user = new User({
+      username: 'Jake',
+      email: 'jake@jake.com',
+      password: 'password',
+      tarotCard: []
+    });
+
+    await user.save();
+  }
+  else {
+    console.log('User found');
+  }
+})();
 
 module.exports = User;
